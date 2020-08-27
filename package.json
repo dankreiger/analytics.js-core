@@ -96,6 +96,7 @@
     "karma-sauce-launcher": "^1.2.0",
     "karma-spec-reporter": "0.0.32",
     "karma-summary-reporter": "^1.8.0",
+    "karma-typescript": "^5.1.0",
     "lint-staged": "^7.2.0",
     "lodash": "^4.17.15",
     "mocha": "^2.2.5",

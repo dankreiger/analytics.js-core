@@ -13,19 +13,20 @@ module.exports = function(config) {
   config.set({
     files: [
       { pattern: 'test/support/*.html', included: false },
-      'test/support/global.js', // NOTE: This must run before all tests
-      'test/**/*.test.js'
+      'test/support/global.ts', // NOTE: This must run before all tests
+      'test/**/*.test.ts'
     ],
     browsers: ['ChromeHeadless'],
 
     singleRun: true,
 
-    frameworks: ['browserify', 'mocha'],
+    frameworks: ['browserify', 'mocha', 'karma-typescript'],
 
     reporters: ['spec'],
 
     preprocessors: {
-      'test/**/*.js': 'browserify'
+      'test/**/*.js': 'browserify',
+      'test/**/*.ts': 'karma-typescript'
     },
 
     browserNoActivityTimeout: TEST_TIMEOUT,
@@ -39,6 +40,15 @@ module.exports = function(config) {
 
     browserify: {
       debug: true
+    },
+
+    karmaTypescriptConfig: {
+      compilerOptions: {
+        module: 'commonjs',
+        target: 'ES5'
+      },
+      include: ['test'],
+      exclude: ['node_modules', 'lib', 'test-e2e']
     }
   });
 };
